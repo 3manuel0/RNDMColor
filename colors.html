@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colors</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="header">
+    <h1>Random Color Generator</h1>
+  </div>
+  <div class="main">
+    <button class="btn" onclick="colorChanger()">Random Color</button>
+    <input class="hex" onclick="copy()" />
+  </div>
+</body>
+<script>
+  function hexColor(color) {
+    let hex = color.toString(16);
+    if (hex.length == 1) {
+      hex = "0" + hex;
+    }
+    return hex;
+  }
+  function colorChanger() {
+    let bg = document.querySelector(".main");
+    let hexDiv = document.querySelector(".hex");
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let hex = "#" + hexColor(r) + hexColor(g) + hexColor(b);
+    bg.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    hexDiv.value = hex;
+  }
+  function copy() {
+    var copyText = document.querySelector(".hex");
+    copyText.select();
+    document.execCommand("copy");
+  }
+</script>
+
+</html>
